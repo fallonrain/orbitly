@@ -1,0 +1,6 @@
+@Orbitly.Api_HostAddress = http://localhost:5196
+
+GET {{Orbitly.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
