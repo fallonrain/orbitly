@@ -1,157 +1,117 @@
-# 🌌 Orbitly
+# 🚀 Orbitly
 
-A slow social network built to encourage thoughtful conversations instead of dopamine-driven engagement.
-
----
-
-## ✨ About the Project
-
-Orbitly is a backend-first project designed to explore modern backend architecture using .NET.
-
-The platform follows a **digital minimalism philosophy**, where users interact through meaningful text-based posts instead of likes, followers, or infinite scrolling.
-
-Each user is represented as a **star**, and interactions form a **cosmic network**.
+Orbitly is a fullstack social media project inspired by platforms like Instagram and Twitter.  
+It focuses on building a modern feed system using clean architecture and scalable backend patterns.
 
 ---
 
-## 🧠 Core Concepts
+## 🧠 Architecture
 
-- Users are **stars**
-- Posts are **light emissions**
-- Replies are **orbits**
-- Connections form **constellations**
-- Feed is the **Night Sky**
-
----
-
-## 🚀 Features Implemented
-
-- ✅ Clean Architecture (Domain, Application, Infrastructure, API)
-- ✅ MediatR (CQRS pattern)
-- ✅ Entity Framework Core
-- ✅ PostgreSQL (Docker)
-- ✅ Repository Pattern
-- ✅ Post creation endpoint
-- ✅ Business rule: **1 post per day per user**
-- ✅ Validation at application layer
-- ✅ Persistence with EF Core
-- ✅ SQL logging for debugging
+- Clean Architecture
+- CQRS with MediatR
+- Repository Pattern
+- Entity Framework Core
 
 ---
 
-## 🏗️ Architecture
+## ⚙️ Backend (ASP.NET Core)
 
-```
-API → Application → Domain
-           ↑
-     Infrastructure
-```
+### Features
+- Create posts
+- Get paginated feed
+- Random posts
+- Feed based on user connections
+- Validation pipeline
 
-- **Domain** → Business rules and entities  
-- **Application** → Use cases and commands  
-- **Infrastructure** → Database and external services  
-- **API** → HTTP layer  
-
----
-
-## 🛠️ Tech Stack
-
-- .NET 8
-- ASP.NET Core Web API
+### Tech Stack
+- ASP.NET Core
 - MediatR
 - Entity Framework Core
 - PostgreSQL
-- Docker
 
 ---
 
-## ⚙️ Running the Project
+## 💻 Frontend (React + Vite)
 
-### 1. Clone the repository
+### Features
+- Feed visualization
+- API integration with Axios
 
-```bash
-git clone https://github.com/fallonrain/orbitly.git
-cd orbitly
+### Tech Stack
+- React
+- Vite
+- Axios
+
+---
+
+## 🔥 Current Status
+
+- Backend running ✅
+- Database connected ✅
+- Feed working (recent + random) ✅
+- React consuming API ✅
+- Basic UI implemented ⚠️
+- Authentication not implemented ❌
+
+---
+
+## 📂 Project Structure
+
+```
+Orbitly/
+ ├── Orbitly.Api
+ ├── Orbitly.Application
+ ├── Orbitly.Domain
+ ├── Orbitly.Infrastructure
+ └── orbitly-web (React)
 ```
 
 ---
 
-### 2. Run PostgreSQL with Docker
+## ▶️ How to Run
 
-```bash
-docker run -d --name orbitly-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=orbitly -p 5432:5432 postgres:15
-```
-
----
-
-### 3. Apply migrations
-
-```bash
-dotnet ef database update --project Orbitly.Infrastructure --startup-project Orbitly.Api
-```
-
----
-
-### 4. Run the API
+### Backend
 
 ```bash
 dotnet run --project Orbitly.Api
 ```
 
----
+### Frontend
 
-### 5. Access Swagger
-
-http://localhost:5196/swagger
-
----
-
-## 🧪 Example Request
-
-POST `/api/posts`
-
-```json
-{
-  "userId": "11111111-1111-1111-1111-111111111111",
-  "content": "My first post in the galaxy 🌌"
-}
+```bash
+cd orbitly-web
+npm install
+npm run dev
 ```
 
 ---
 
-## 🚫 Business Rules
+## 🌐 Ports
 
-- A user can only create **one post per day**
-- Posts must have:
-  - max 500 characters
-  - non-empty content
+- Backend: http://localhost:5196
+- Frontend: http://localhost:5173
 
 ---
 
-## 📈 Future Improvements
+## 🚧 Next Steps
 
-- Global error handling (ProblemDetails)
-- Authentication (JWT)
-- User management
-- Feed (Night Sky)
-- Replies (Orbits)
-- Redis caching
-- Supernova detection (high-engagement posts)
+- Improve UI (PostCard component)
+- Create post feature (frontend form)
+- Implement authentication
+- Improve constellation feed logic
 
 ---
 
-## 🎯 Goal
+## 📌 Notes
 
-This project aims to simulate a **real-world backend system**, focusing on:
-
-- scalability
-- maintainability
-- clean architecture
-- real business rules
+This project is being developed as a learning and portfolio project, focusing on:
+- Backend architecture
+- API design
+- Integration with frontend
+- Real-world system simulation
 
 ---
 
-## 👩‍💻 Author
+## 👨‍💻 Author
 
-Developed by Thiago Fernandes 
-
+Developed as part of a backend learning journey into modern systems and AI-ready architectures.
