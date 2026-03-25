@@ -1,8 +1,19 @@
+# .NET
 bin/
 obj/
+
+# Visual Studio
 .vs/
 *.user
 *.suo
+
+# Logs / DB
 *.db
 *.log
+
+# Env
 .env
+
+# Node (frontend)
+node_modules/
+dist/

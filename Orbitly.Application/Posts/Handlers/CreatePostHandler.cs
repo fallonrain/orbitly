@@ -1,6 +1,7 @@
 using MediatR;
 using Orbitly.Application.Posts;
 using Orbitly.Domain.Entities;
+using Orbitly.Domain.Exceptions;
 
 namespace Orbitly.Application.Posts.Commands;
 
@@ -18,7 +19,7 @@ public class CreatePostHandler : IRequestHandler<CreatePostCommand, Guid>
         var alreadyPosted = await _repository.HasPostToday(request.UserId);
 
         if (alreadyPosted)
-            throw new Exception("You can only post once per day");
+            throw new DailyPostLimitExceededException();
 
         var post = new Post(request.UserId, request.Content);
 

@@ -12,4 +12,5 @@ public class OrbitlyDbContext : DbContext
 
     public DbSet<User> Users => Set<User>();
     public DbSet<Post> Posts => Set<Post>();
+    public DbSet<Connection> Connections { get; set; }
 }

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Orbitly.Application.Posts;
 using Orbitly.Domain.Entities;
 using Orbitly.Infrastructure.Persistence;
+using System.Linq;
 
 namespace Orbitly.Infrastructure.Repositories;
 
@@ -29,5 +30,31 @@ public class PostRepository : IPostRepository
             .AnyAsync(p => p.UserId == userId 
                     && p.CreatedAt >= start 
                     && p.CreatedAt < end);
+    }
+
+    public async Task<List<Post>> GetRecentPostsAsync(int page, int pageSize)
+    {
+        return await _context.Posts
+            .OrderByDescending(p => p.CreatedAt)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+    }
+
+    public async Task<List<Post>> GetRandomPostsAsync(int count)
+    {
+        return await _context.Posts
+            .OrderBy(p => Guid.NewGuid())
+            .Take(count)
+            .ToListAsync();
+    }
+
+    public async Task<List<Post>> GetPostsByUsersAsync(List<Guid> userIds)
+    {
+        return await _context.Posts
+            .Where(p => userIds.Contains(p.UserId))
+            .OrderByDescending(p => p.CreatedAt)
+            .Take(10)
+            .ToListAsync();
     }
 }

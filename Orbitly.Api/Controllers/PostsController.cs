@@ -15,17 +15,11 @@ public class PostsController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Create(CreatePostCommand command)
+   [HttpPost]
+    public async Task<IActionResult> Create([FromBody] CreatePostCommand command)
 {
-    try
-    {
         var postId = await _mediator.Send(command);
+
         return Ok(postId);
-    }
-    catch (Exception ex)
-    {
-        return BadRequest(new { error = ex.Message });
-    }
 }
 }

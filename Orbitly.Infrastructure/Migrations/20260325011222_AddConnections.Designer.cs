@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Orbitly.Infrastructure.Persistence;
@@ -11,9 +12,11 @@ using Orbitly.Infrastructure.Persistence;
 namespace Orbitly.Infrastructure.Migrations
 {
     [DbContext(typeof(OrbitlyDbContext))]
-    partial class OrbitlyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260325011222_AddConnections")]
+    partial class AddConnections
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
